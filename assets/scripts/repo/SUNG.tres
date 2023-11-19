@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SUNG" load_steps=2 format=3 uid="uid://b3ewlg4ot3k3n"]
+
+[ext_resource type="Script" path="res://assets/scripts/stat_sheets/sung_stats.gd" id="1_c6tn6"]
+
+[resource]
+script = ExtResource("1_c6tn6")
+name = "Sung"
+health = 19
+attack = 8
+magic = 0
+defense = 9
+speed = 4
+experience = 0

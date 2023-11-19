@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpjasehca1b10"]
+
+[ext_resource type="FontFile" uid="uid://bx1ke3lhq6gdy" path="res://assets/fonts/CelticHand.ttf" id="1_n5kxs"]
+[ext_resource type="PackedScene" uid="uid://bqduyguyxod3l" path="res://assets/scenes/enemy_group.tscn" id="1_u6q3v"]
+[ext_resource type="PackedScene" uid="uid://hf0p4p7grwks" path="res://assets/scenes/player_group.tscn" id="2_ycb5n"]
+
+[sub_resource type="Environment" id="Environment_e6d6q"]
+
+[sub_resource type="Theme" id="Theme_qq013"]
+default_font = ExtResource("1_n5kxs")
+Button/colors/font_color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_e6d6q")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 512.0
+offset_bottom = 512.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 1.43901, 2.20426)
+
+[node name="choice" type="VBoxContainer" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1084.0
+offset_top = -66.0
+offset_right = -896.0
+offset_bottom = 80.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = SubResource("Theme_qq013")
+
+[node name="Attack" type="Button" parent="choice"]
+layout_mode = 2
+text = "Attack"
+
+[node name="Magic" type="Button" parent="choice"]
+layout_mode = 2
+disabled = true
+text = "Magic"
+
+[node name="Item" type="Button" parent="choice"]
+layout_mode = 2
+disabled = true
+text = "Item"
+
+[node name="Defend" type="Button" parent="choice"]
+layout_mode = 2
+disabled = true
+text = "Defend"
+
+[node name="Run" type="Button" parent="choice"]
+layout_mode = 2
+disabled = true
+text = "Run"
+
+[node name="BattleScene" type="Node3D" parent="."]
+
+[node name="EnemyGroup" parent="BattleScene" instance=ExtResource("1_u6q3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+
+[node name="PlayerGroup" parent="BattleScene" instance=ExtResource("2_ycb5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0, 1)
+
+[connection signal="pressed" from="choice/Attack" to="BattleScene/EnemyGroup" method="_on_attack_pressed"]
+[connection signal="next_player" from="BattleScene/EnemyGroup" to="BattleScene/PlayerGroup" method="_on_enemy_group_next_player"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bm1ksgerd3p0k"]
+
+[ext_resource type="Script" path="res://assets/scripts/SoundManager.gd" id="1_xh8ek"]
+[ext_resource type="AudioStream" uid="uid://bdnahojxytoow" path="res://assets/sfx/Selected.mp3" id="2_mm472"]
+[ext_resource type="AudioStream" uid="uid://daa8w8apfharu" path="res://assets/sfx/SelectFail.mp3" id="3_of2n2"]
+[ext_resource type="AudioStream" uid="uid://b783w4uakuvvw" path="res://assets/sfx/Back.mp3" id="4_pwp4t"]
+[ext_resource type="AudioStream" uid="uid://cdo1u6kydktf6" path="res://assets/sfx/ReceiveDamageSung.wav" id="5_nnp3l"]
+
+[node name="SoundManager" type="Node2D"]
+script = ExtResource("1_xh8ek")
+
+[node name="Select" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_mm472")
+volume_db = 1.0
+
+[node name="SelectFail" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_of2n2")
+
+[node name="Back" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_pwp4t")
+volume_db = 1.0
+
+[node name="Up_Down" type="AudioStreamPlayer3D" parent="."]
+
+[node name="SungHit" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_nnp3l")
+
+[node name="Attack" type="AudioStreamPlayer3D" parent="."]

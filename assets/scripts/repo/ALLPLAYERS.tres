@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="AllPlayers" load_steps=2 format=3 uid="uid://tlvlj04b2v5r"]
+
+[ext_resource type="Script" path="res://assets/scripts/stat_sheets/all_stats.gd" id="1_me4tm"]
+
+[resource]
+script = ExtResource("1_me4tm")

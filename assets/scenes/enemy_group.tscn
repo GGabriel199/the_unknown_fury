@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqduyguyxod3l"]
+
+[ext_resource type="Script" path="res://assets/scripts/enemy_group.gd" id="1_bcd1v"]
+[ext_resource type="PackedScene" uid="uid://e4n7r0w07lxd" path="res://assets/scenes/character.tscn" id="2_i1nl5"]
+
+[node name="EnemyGroup" type="Node3D"]
+script = ExtResource("1_bcd1v")
+
+[node name="Goo1" parent="." groups=["enemy"] instance=ExtResource("2_i1nl5")]
+
+[node name="Goo2" parent="." groups=["enemy"] instance=ExtResource("2_i1nl5")]
+
+[node name="Goo3" parent="." groups=["enemy"] instance=ExtResource("2_i1nl5")]
+
+[node name="Goo4" parent="." groups=["enemy"] instance=ExtResource("2_i1nl5")]
+
+[editable path="Goo1"]
+[editable path="Goo2"]
+[editable path="Goo3"]
+[editable path="Goo4"]

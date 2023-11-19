@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="GOO" load_steps=2 format=3 uid="uid://8iv76xxetoqp"]
+
+[ext_resource type="Script" path="res://assets/scripts/stat_sheets/goo_stats.gd" id="1_41jai"]
+
+[resource]
+script = ExtResource("1_41jai")
+name = "Goo"
+health = 15
+attack = 2
+magic = 0
+defense = 6
+speed = 3
+experience = 1
+experience_value = 0

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dg74t5eebqbxt"]
+
+[ext_resource type="Texture2D" uid="uid://cuwh4x4kyi54j" path="res://assets/ui/BarsFrame.png" id="1_s5ptd"]
+[ext_resource type="Texture2D" uid="uid://sb75hihhm0o4" path="res://assets/ui/HealthBar/bar.png" id="2_cmqhs"]
+[ext_resource type="Script" path="res://assets/scripts/texture_progress_bar.gd" id="3_kebx3"]
+
+[node name="HealthDisplay" type="Node2D"]
+script = ExtResource("3_kebx3")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_right = 16.0
+offset_bottom = 64.0
+value = 100.0
+fill_mode = 3
+texture_under = ExtResource("1_s5ptd")
+texture_progress = ExtResource("2_cmqhs")
+tint_progress = Color(0.407843, 0.741176, 0.341176, 1)

@@ -1,18 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpjasehca1b10"]
+[gd_scene load_steps=7 format=3 uid="uid://bpjasehca1b10"]
 
-[ext_resource type="FontFile" uid="uid://bx1ke3lhq6gdy" path="res://assets/fonts/CelticHand.ttf" id="1_n5kxs"]
+[ext_resource type="Theme" uid="uid://cr5c8sq18ffmt" path="res://assets/ui/Themes/TUF_theme.tres" id="1_otkxt"]
 [ext_resource type="PackedScene" uid="uid://bqduyguyxod3l" path="res://assets/scenes/enemy_group.tscn" id="1_u6q3v"]
 [ext_resource type="PackedScene" uid="uid://hf0p4p7grwks" path="res://assets/scenes/player_group.tscn" id="2_ycb5n"]
 [ext_resource type="PackedScene" uid="uid://bm1ksgerd3p0k" path="res://assets/scenes/sound_manager.tscn" id="4_wyglq"]
 [ext_resource type="Script" path="res://assets/scripts/playerStats.gd" id="5_inlpf"]
-[ext_resource type="PackedScene" uid="uid://bcv7vil7tfred" path="res://assets/scenes/panel_of_heroes.tscn" id="6_qncbx"]
 
 [sub_resource type="Environment" id="Environment_e6d6q"]
 sky_custom_fov = 11.0
-
-[sub_resource type="Theme" id="Theme_qq013"]
-default_font = ExtResource("1_n5kxs")
-Button/colors/font_color = Color(0.8, 0.8, 0.8, 1)
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -22,6 +17,7 @@ environment = SubResource("Environment_e6d6q")
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 offset_right = 512.0
 offset_bottom = 512.0
+theme = ExtResource("1_otkxt")
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
@@ -31,37 +27,57 @@ render_target_update_mode = 4
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 1.43901, 2.20426)
 
-[node name="choice" type="VBoxContainer" parent="."]
-anchors_preset = 6
-anchor_left = 1.0
+[node name="choice" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -1084.0
-offset_top = -66.0
-offset_right = -896.0
-offset_bottom = 80.0
-grow_horizontal = 0
+offset_left = -94.0
+offset_top = -118.0
+offset_right = 94.0
+offset_bottom = 118.0
+grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_qq013")
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_otkxt")
 
-[node name="Attack" type="Button" parent="choice"]
+[node name="choice_buttons" type="VBoxContainer" parent="choice"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.5
+offset_top = -53.0
+offset_right = 24.5
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(24, 56)
+theme = ExtResource("1_otkxt")
+
+[node name="Attack" type="Button" parent="choice/choice_buttons"]
 layout_mode = 2
+theme = ExtResource("1_otkxt")
 text = "Attack"
 
-[node name="Magic" type="Button" parent="choice"]
+[node name="Magic" type="Button" parent="choice/choice_buttons"]
 layout_mode = 2
 text = "Magic"
 
-[node name="Item" type="Button" parent="choice"]
+[node name="Item" type="Button" parent="choice/choice_buttons"]
 layout_mode = 2
 text = "Item"
 
-[node name="Defend" type="Button" parent="choice"]
+[node name="Defend" type="Button" parent="choice/choice_buttons"]
 layout_mode = 2
 text = "Defend"
 
-[node name="Run" type="Button" parent="choice"]
+[node name="Run" type="Button" parent="choice/choice_buttons"]
 layout_mode = 2
 text = "Run"
 
@@ -71,6 +87,7 @@ offset_left = 836.0
 offset_top = 622.0
 offset_right = 1024.0
 offset_bottom = 622.0
+theme = ExtResource("1_otkxt")
 columns = 3
 
 [node name="ItemChoice" type="GridContainer" parent="."]
@@ -79,6 +96,7 @@ offset_left = 836.0
 offset_top = 622.0
 offset_right = 1024.0
 offset_bottom = 622.0
+theme = ExtResource("1_otkxt")
 
 [node name="BattleScene" type="Node3D" parent="."]
 
@@ -93,6 +111,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0, 1)
 [node name="playerStats" type="VBoxContainer" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("1_otkxt")
 script = ExtResource("5_inlpf")
 
 [node name="Name" type="Label" parent="playerStats"]
@@ -119,22 +138,9 @@ text = "speed_value"
 layout_mode = 2
 text = "nxt_exp_level"
 
-[node name="panel_of_heroes" parent="." instance=ExtResource("6_qncbx")]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -208.0
-offset_top = -266.0
-offset_right = -68.0
-offset_bottom = -188.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[connection signal="pressed" from="choice/Attack" to="BattleScene/EnemyGroup" method="_on_attack_pressed"]
-[connection signal="pressed" from="choice/Magic" to="BattleScene/EnemyGroup" method="_on_magic_pressed"]
-[connection signal="pressed" from="choice/Item" to="BattleScene/EnemyGroup" method="_on_item_pressed"]
-[connection signal="pressed" from="choice/Defend" to="BattleScene/EnemyGroup" method="_on_defend_pressed"]
-[connection signal="pressed" from="choice/Run" to="BattleScene/EnemyGroup" method="_on_run_pressed"]
+[connection signal="pressed" from="choice/choice_buttons/Attack" to="BattleScene/EnemyGroup" method="_on_attack_pressed"]
+[connection signal="pressed" from="choice/choice_buttons/Magic" to="BattleScene/EnemyGroup" method="_on_magic_pressed"]
+[connection signal="pressed" from="choice/choice_buttons/Item" to="BattleScene/EnemyGroup" method="_on_item_pressed"]
+[connection signal="pressed" from="choice/choice_buttons/Defend" to="BattleScene/EnemyGroup" method="_on_defend_pressed"]
+[connection signal="pressed" from="choice/choice_buttons/Run" to="BattleScene/EnemyGroup" method="_on_run_pressed"]
 [connection signal="next_player" from="BattleScene/EnemyGroup" to="BattleScene/PlayerGroup" method="_on_enemy_group_next_player"]

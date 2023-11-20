@@ -1,125 +1,114 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcv7vil7tfred"]
+[gd_scene load_steps=6 format=3 uid="uid://bcv7vil7tfred"]
 
+[ext_resource type="Theme" uid="uid://cr5c8sq18ffmt" path="res://assets/ui/Themes/TUF_theme.tres" id="1_kclbv"]
 [ext_resource type="Texture2D" uid="uid://c7xeagikvfo8s" path="res://assets/chars/protag4.png" id="1_tcrm0"]
 [ext_resource type="Texture2D" uid="uid://blpcxk6fcmgwd" path="res://assets/chars/moniPICTURE.png" id="2_8krl6"]
 [ext_resource type="Texture2D" uid="uid://3uplk2l8r2mn" path="res://assets/chars/maroonPICTURE.png" id="3_y27nr"]
 [ext_resource type="Texture2D" uid="uid://3so8wxg7fdb5" path="res://assets/chars/AntonietaPICTURE.png" id="4_ki0ph"]
 
-[node name="PanelContainer" type="PanelContainer"]
-offset_right = 140.0
-offset_bottom = 78.0
+[node name="panel_of_heroes" type="Node3D"]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(140, 78)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_left = 750.0
+offset_top = 821.0
+offset_right = 890.0
+offset_bottom = 899.0
 scale = Vector2(3, 3)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("1_kclbv")
 
-[node name="panel_of_heroes" type="HBoxContainer" parent="."]
+[node name="panel_of_heroes" type="HBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="panel_of_heroes"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/panel_of_heroes"]
 layout_mode = 2
 
-[node name="hero_name1" type="Label" parent="panel_of_heroes/VBoxContainer"]
+[node name="hero_name1" type="Label" parent="PanelContainer/panel_of_heroes/VBoxContainer"]
 layout_mode = 2
 text = "Sung"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="hero_pic_1" type="TextureRect" parent="panel_of_heroes/VBoxContainer"]
+[node name="hero_pic_1" type="TextureRect" parent="PanelContainer/panel_of_heroes/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("1_tcrm0")
 stretch_mode = 2
 
-[node name="health_bar_1" type="ProgressBar" parent="panel_of_heroes/VBoxContainer"]
-layout_mode = 2
-value = 100.0
-show_percentage = false
-
-[node name="magic_bar_1" type="ProgressBar" parent="panel_of_heroes/VBoxContainer"]
+[node name="magic_bar_1" type="ProgressBar" parent="PanelContainer/panel_of_heroes/VBoxContainer"]
 layout_mode = 2
 value = 100.0
 rounded = true
 show_percentage = false
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="panel_of_heroes"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/panel_of_heroes"]
 layout_mode = 2
 
-[node name="hero_name_2" type="Label" parent="panel_of_heroes/VBoxContainer2"]
+[node name="hero_name_2" type="Label" parent="PanelContainer/panel_of_heroes/VBoxContainer2"]
 layout_mode = 2
 text = "Moni"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="hero_pic_2" type="TextureRect" parent="panel_of_heroes/VBoxContainer2"]
+[node name="hero_pic_2" type="TextureRect" parent="PanelContainer/panel_of_heroes/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_8krl6")
 stretch_mode = 2
 
-[node name="health_bar_2" type="ProgressBar" parent="panel_of_heroes/VBoxContainer2"]
-layout_mode = 2
-value = 100.0
-show_percentage = false
-
-[node name="magic_bar_2" type="ProgressBar" parent="panel_of_heroes/VBoxContainer2"]
+[node name="magic_bar_2" type="ProgressBar" parent="PanelContainer/panel_of_heroes/VBoxContainer2"]
 layout_mode = 2
 value = 100.0
 rounded = true
 show_percentage = false
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="panel_of_heroes"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="PanelContainer/panel_of_heroes"]
 layout_mode = 2
 
-[node name="hero_name_3" type="Label" parent="panel_of_heroes/VBoxContainer3"]
+[node name="hero_name_3" type="Label" parent="PanelContainer/panel_of_heroes/VBoxContainer3"]
 layout_mode = 2
 text = "Maroon"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="hero_pic_3" type="TextureRect" parent="panel_of_heroes/VBoxContainer3"]
+[node name="hero_pic_3" type="TextureRect" parent="PanelContainer/panel_of_heroes/VBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("3_y27nr")
 stretch_mode = 2
 
-[node name="health_bar_3" type="ProgressBar" parent="panel_of_heroes/VBoxContainer3"]
-layout_mode = 2
-value = 100.0
-show_percentage = false
-
-[node name="magic_bar_3" type="ProgressBar" parent="panel_of_heroes/VBoxContainer3"]
+[node name="magic_bar_3" type="ProgressBar" parent="PanelContainer/panel_of_heroes/VBoxContainer3"]
 layout_mode = 2
 value = 100.0
 rounded = true
 show_percentage = false
 
-[node name="VBoxContainer4" type="VBoxContainer" parent="panel_of_heroes"]
+[node name="VBoxContainer4" type="VBoxContainer" parent="PanelContainer/panel_of_heroes"]
 layout_mode = 2
 
-[node name="hero_name_4" type="Label" parent="panel_of_heroes/VBoxContainer4"]
+[node name="hero_name_4" type="Label" parent="PanelContainer/panel_of_heroes/VBoxContainer4"]
 layout_mode = 2
 text = "Antonieta"
 autowrap_mode = 2
 
-[node name="hero_pic_4" type="TextureRect" parent="panel_of_heroes/VBoxContainer4"]
+[node name="hero_pic_4" type="TextureRect" parent="PanelContainer/panel_of_heroes/VBoxContainer4"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("4_ki0ph")
 stretch_mode = 2
 
-[node name="health_bar_4" type="ProgressBar" parent="panel_of_heroes/VBoxContainer4"]
-layout_mode = 2
-value = 100.0
-show_percentage = false
-
-[node name="magic_bar_4" type="ProgressBar" parent="panel_of_heroes/VBoxContainer4"]
+[node name="magic_bar_4" type="ProgressBar" parent="PanelContainer/panel_of_heroes/VBoxContainer4"]
 layout_mode = 2
 value = 100.0
 rounded = true

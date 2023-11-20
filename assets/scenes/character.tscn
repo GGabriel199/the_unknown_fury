@@ -1,11 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://e4n7r0w07lxd"]
+[gd_scene load_steps=10 format=3 uid="uid://e4n7r0w07lxd"]
 
 [ext_resource type="Script" path="res://assets/scripts/character.gd" id="1_hhsd7"]
 [ext_resource type="Texture2D" uid="uid://bxlx2gdwvghx3" path="res://assets/sprites/enemy1-Sheet.png" id="2_dk6hm"]
 [ext_resource type="Texture2D" uid="uid://boriypjn0muil" path="res://assets/ui/Focus.png" id="3_m4734"]
 [ext_resource type="Texture2D" uid="uid://cuwh4x4kyi54j" path="res://assets/ui/BarsFrame.png" id="4_jxvps"]
-[ext_resource type="Script" path="res://assets/scripts/Health.gd" id="5_r0ydm"]
-[ext_resource type="Script" path="res://assets/scripts/texture_progress_bar.gd" id="6_ig6sa"]
 [ext_resource type="Texture2D" uid="uid://sb75hihhm0o4" path="res://assets/ui/HealthBar/bar.png" id="7_3qwef"]
 
 [sub_resource type="Animation" id="Animation_bqlsn"]
@@ -87,24 +85,14 @@ billboard = 1
 double_sided = false
 texture_filter = 0
 texture = ExtResource("7_3qwef")
-script = ExtResource("5_r0ydm")
 
-[node name="SubViewport" type="SubViewport" parent="Health"]
-disable_3d = true
-snap_2d_transforms_to_pixel = true
-snap_2d_vertices_to_pixel = true
-canvas_item_default_texture_filter = 0
-size = Vector2i(16, 64)
+[node name="TextureProgress" type="Node3D" parent="Health"]
 
-[node name="TextureProgressBar" type="Node2D" parent="Health/SubViewport"]
-script = ExtResource("6_ig6sa")
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Health/SubViewport/TextureProgressBar"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Health/TextureProgress"]
 top_level = true
-offset_right = 16.0
-offset_bottom = 64.0
+offset_right = 64.0
+offset_bottom = 16.0
 value = 100.0
-fill_mode = 3
 texture_under = ExtResource("4_jxvps")
 texture_progress = ExtResource("7_3qwef")
 tint_progress = Color(0.407843, 0.741176, 0.341176, 1)

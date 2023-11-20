@@ -60,7 +60,11 @@ func show_choice():
 	choice.find_child("Magic").grab_focus()
 	choice.find_child("Item").grab_focus()
 	choice.find_child("Defend").grab_focus()
-	
+
+func _on_enemies_defeated():
+	if enemies == null:
+		get_tree().change_scene_to_file("res://assets/scenes/world.tscn")
+
 func show_magic():
 	choice.show()
 	
@@ -89,4 +93,4 @@ func _on_defend_pressed():
 	choice.hide()
 
 func _on_run_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://assets/scenes/world.tscn")

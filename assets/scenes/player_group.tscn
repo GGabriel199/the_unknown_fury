@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://hf0p4p7grwks"]
+[gd_scene load_steps=8 format=3 uid="uid://hf0p4p7grwks"]
 
 [ext_resource type="Script" path="res://assets/scripts/player_group.gd" id="1_7ypwa"]
 [ext_resource type="PackedScene" uid="uid://e4n7r0w07lxd" path="res://assets/scenes/character.tscn" id="1_ny5k5"]
@@ -6,15 +6,31 @@
 [ext_resource type="Texture2D" uid="uid://io8vpqsyr8bs" path="res://assets/sprites/Moni.png" id="4_f8bdl"]
 [ext_resource type="Texture2D" uid="uid://bcs5yy6ccjvuo" path="res://assets/sprites/Wolfus.png" id="5_7uqwf"]
 [ext_resource type="Texture2D" uid="uid://c1iwdwchti7p" path="res://assets/chars/Antonieta.png" id="6_y5bpe"]
+[ext_resource type="PackedScene" uid="uid://bcv7vil7tfred" path="res://assets/scenes/panel_of_heroes.tscn" id="7_1ni5k"]
 
 [node name="PlayerGroup" type="Node3D"]
 script = ExtResource("1_7ypwa")
 
 [node name="Character" parent="." instance=ExtResource("1_ny5k5")]
+visible = false
 
 [node name="Sprite3D" parent="Character" index="0"]
 texture = ExtResource("3_d1rap")
 vframes = 5
+
+[node name="TextureProgressBar" parent="Character/Health/TextureProgress" index="0"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -210.0
+offset_top = -50.0
+offset_right = -146.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
 
 [node name="Character2" parent="." instance=ExtResource("1_ny5k5")]
 
@@ -23,6 +39,24 @@ texture = ExtResource("4_f8bdl")
 hframes = 1
 vframes = 1
 
+[node name="Health" parent="Character2" index="2"]
+visible = false
+
+[node name="TextureProgressBar" parent="Character2/Health/TextureProgress" index="0"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -102.0
+offset_top = -50.0
+offset_right = -38.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
 [node name="Character3" parent="." instance=ExtResource("1_ny5k5")]
 
 [node name="Sprite3D" parent="Character3" index="0"]
@@ -30,12 +64,50 @@ texture = ExtResource("5_7uqwf")
 hframes = 1
 vframes = 1
 
+[node name="Health" parent="Character3" index="2"]
+visible = false
+
+[node name="TextureProgressBar" parent="Character3/Health/TextureProgress" index="0"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -50.0
+offset_right = 70.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
 [node name="Character4" parent="." instance=ExtResource("1_ny5k5")]
 
 [node name="Sprite3D" parent="Character4" index="0"]
 texture = ExtResource("6_y5bpe")
 hframes = 1
 vframes = 1
+
+[node name="Health" parent="Character4" index="2"]
+visible = false
+
+[node name="TextureProgressBar" parent="Character4/Health/TextureProgress" index="0"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 114.0
+offset_top = -50.0
+offset_right = 178.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PanelContainer" parent="." instance=ExtResource("7_1ni5k")]
 
 [editable path="Character"]
 [editable path="Character2"]

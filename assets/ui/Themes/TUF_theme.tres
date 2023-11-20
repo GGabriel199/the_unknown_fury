@@ -1,0 +1,82 @@
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://cr5c8sq18ffmt"]
+
+[ext_resource type="Texture2D" uid="uid://bp8hn1qmh38g3" path="res://assets/ui/ButtonFrame.png" id="1_24o3y"]
+[ext_resource type="FontFile" uid="uid://bx1ke3lhq6gdy" path="res://assets/fonts/CelticHand.ttf" id="2_dpvgo"]
+[ext_resource type="Texture2D" uid="uid://ciyb55kmcwqkf" path="res://assets/ui/BattlePanel.png" id="3_muwv0"]
+[ext_resource type="Texture2D" uid="uid://cuwh4x4kyi54j" path="res://assets/ui/BarsFrame.png" id="4_1yf7k"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8egky"]
+texture = ExtResource("1_24o3y")
+texture_margin_top = 0.270261
+region_rect = Rect2(48, 0, 48, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_owm7a"]
+texture = ExtResource("1_24o3y")
+region_rect = Rect2(0, 16, 48, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_43tr8"]
+texture = ExtResource("1_24o3y")
+region_rect = Rect2(0, 0, 48, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7hjpd"]
+texture = ExtResource("1_24o3y")
+region_rect = Rect2(0, 0, 48, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5thtw"]
+texture = ExtResource("1_24o3y")
+region_rect = Rect2(48, 16, 48, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oe4fb"]
+texture = ExtResource("3_muwv0")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57d0y"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0, 0, 0.129412)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.741176, 0.74902, 0.576471, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+anti_aliasing_size = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ekr4r"]
+texture = ExtResource("4_1yf7k")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gtlru"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[resource]
+default_font = ExtResource("2_dpvgo")
+Button/styles/disabled = SubResource("StyleBoxTexture_8egky")
+Button/styles/focus = SubResource("StyleBoxTexture_owm7a")
+Button/styles/hover = SubResource("StyleBoxTexture_43tr8")
+Button/styles/normal = SubResource("StyleBoxTexture_7hjpd")
+Button/styles/pressed = SubResource("StyleBoxTexture_5thtw")
+Fonts/fonts/large = ExtResource("2_dpvgo")
+Fonts/fonts/normal = ExtResource("2_dpvgo")
+Fonts/fonts/small = ExtResource("2_dpvgo")
+Panel/styles/panel = SubResource("StyleBoxTexture_oe4fb")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_57d0y")
+ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
+ProgressBar/colors/font_outline_color = Color(1, 1, 1, 1)
+ProgressBar/colors/font_shadow_color = Color(0, 0, 0, 1)
+ProgressBar/constants/outline_size = 0
+ProgressBar/font_sizes/font_size = 16
+ProgressBar/styles/background = SubResource("StyleBoxTexture_ekr4r")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_gtlru")

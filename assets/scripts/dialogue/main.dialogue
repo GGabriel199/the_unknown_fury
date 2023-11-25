@@ -1,0 +1,30 @@
+~ startdialogue
+
+if globalNpc.given_npc_item == false
+	Npc: [[Ei|Iae|Iai cusao]]... fala
+	- Quem tu és?
+		Npc: Só um pastor a procura de sua pedra sagrada
+		Sung: Humph
+		Npc: Fala oq vc quer de uma vez karaLIo
+		- Tenho um negocin pra tu:
+			Npc: OOOOH MA GO, oh yeh?
+			- yes, found this tablet of cocaine with your name on it
+				if globalNpc.found_npc_item == true
+					Npc: AAAh... ok, devo ter ammm...
+					set globalNpc.given_npc_item = true
+					Police: HEY YOURRR UNDRR ARREST!
+					Npc: SHi..-
+					=> END
+				else:
+					osh, tem nada ai krl, TU TA MALUCO!????
+					=> END
+			- to zuani
+			Npc: nn me haça pierder el tiempo rs
+			=> END
+		- TCHAU => END
+	- TCHAU => END
+else:
+	Npc: [[Ei|Iae|Iai cusao]]... fala poHA
+	Npc: se nn fosse tu eu nn teria ido pra CADEIA AAAHHH
+	Npc: Matei o guarda, agora e sua vez
+=> END!

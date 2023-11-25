@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxs52rxt62ltb"]
+
+[ext_resource type="Texture2D" uid="uid://74tvoltanoct" path="res://assets/ui/DialogFrame.png" id="1_gc7yo"]
+[ext_resource type="Theme" uid="uid://cr5c8sq18ffmt" path="res://assets/ui/Themes/TUF_theme.tres" id="2_33rmh"]
+
+[sub_resource type="GDScript" id="GDScript_wt317"]
+script/source = "extends CanvasLayer
+
+@export (String, FILE, \"*json\") var scene_text_file
+
+var scene_text = {}
+var select_text = []
+var in_progress = false
+
+@onready var background = $Background
+@onready var text_label = $TextLabel
+
+func _ready():
+	background.visible = false
+	scene_text = load_scene_text()
+	SignalBus.connect(\"display_dialog\", self, \"on_display_dialog\")
+
+func load_scene_text():
+	var file = FileAccess.open(scene_text_file)
+	if file.file_exists(scene_text_file):
+		file.open(scene_text_file, FileAccess.READ)
+		return parse_json(file.get_as_text())
+		
+func show_text():
+	text_label.text = select_text.pop_front()
+	
+func next_line():
+	if select_text.size() > 0:
+		show_text()
+	else:
+		finish()
+
+func finish():
+	text_label.text = \"\"
+	background.visible = false
+	in_progress = false
+	get_tree().paused = false
+	
+func _on_display_dialog(text_key):
+	if in_progress:
+		next_line()
+	else:
+		get_tree().paused = true
+		background.visible = true
+		in_progress = true
+		select_text = scene_text[text_key].duplicate()
+		show_text()
+"
+
+[node name="DialogPlayer" type="CanvasLayer"]
+process_mode = 3
+script = SubResource("GDScript_wt317")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_gc7yo")
+
+[node name="TextLabel" type="Label" parent="."]
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 561.0
+offset_bottom = 202.0
+theme = ExtResource("2_33rmh")
+theme_override_colors/font_color = Color(0.380392, 0.380392, 0.388235, 1)
+theme_override_colors/font_shadow_color = Color(0.690196, 0.690196, 0.690196, 1)
+theme_override_font_sizes/font_size = 30
+text = "Text in the dialog will be displayed like
+this"
+autowrap_mode = 1

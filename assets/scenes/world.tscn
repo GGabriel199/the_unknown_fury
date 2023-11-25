@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://cditpyvpja5dv"]
+[gd_scene load_steps=11 format=3 uid="uid://cditpyvpja5dv"]
 
 [ext_resource type="Script" path="res://assets/scripts/world.gd" id="1_4bxjj"]
 [ext_resource type="Texture2D" uid="uid://1rrw548scnj8" path="res://assets/chars/protag.png" id="2_k2toa"]
 [ext_resource type="Script" path="res://assets/scripts/enemy_fight_start.gd" id="3_08ldv"]
 [ext_resource type="Texture2D" uid="uid://drccyh4p377gh" path="res://assets/chars/enemy1.png" id="3_ow6nf"]
+[ext_resource type="PackedScene" uid="uid://cgdt4sgvscb5s" path="res://assets/scenes/npc_area.tscn" id="5_qdxa1"]
+[ext_resource type="AudioStream" uid="uid://b4r553yi6amsn" path="res://assets/sfx/worldThemetest.ogg" id="6_5685k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4pkbo"]
-size = Vector3(0.2, 0.2, 0.2)
+size = Vector3(0.3, 0.3, 0.3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hnwfq"]
 albedo_color = Color(0.47451, 0.384314, 0.258824, 1)
@@ -15,7 +17,7 @@ albedo_color = Color(0.47451, 0.384314, 0.258824, 1)
 size = Vector2(8, 8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e6t5p"]
-size = Vector3(1, 0.2, 1)
+size = Vector3(0.3, 0.3, 0.3)
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_4bxjj")
@@ -24,14 +26,21 @@ script = ExtResource("1_4bxjj")
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="Camera_pivot" groups=["player"]]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0.15, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Camera_pivot/CharacterBody3D"]
 shape = SubResource("BoxShape3D_4pkbo")
 
 [node name="Sprite3D" type="Sprite3D" parent="Camera_pivot/CharacterBody3D"]
 billboard = 1
+texture_filter = 0
 texture = ExtResource("2_k2toa")
+
+[node name="detection_area" type="Area3D" parent="Camera_pivot/CharacterBody3D"]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera_pivot/CharacterBody3D/detection_area"]
+shape = SubResource("BoxShape3D_4pkbo")
 
 [node name="sky_camera" type="Camera3D" parent="Camera_pivot"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 75, 75)
@@ -50,7 +59,7 @@ mesh = SubResource("PlaneMesh_rvvwb")
 [node name="Tile_grid_meshes" type="Node3D" parent="."]
 
 [node name="enemy_area" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 2)
 script = ExtResource("3_08ldv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="enemy_area"]
@@ -58,6 +67,18 @@ shape = SubResource("BoxShape3D_e6t5p")
 
 [node name="Sprite3D" type="Sprite3D" parent="enemy_area"]
 billboard = 1
+texture_filter = 0
 texture = ExtResource("3_ow6nf")
 
+[node name="npc_area" parent="." instance=ExtResource("5_qdxa1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.15, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_5685k")
+
+[connection signal="body_entered" from="Camera_pivot/CharacterBody3D/detection_area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="Camera_pivot/CharacterBody3D/detection_area" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="enemy_area" to="enemy_area" method="_on_body_entered"]
+[connection signal="child_entered_tree" from="AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_child_entered_tree"]
+
+[editable path="npc_area"]

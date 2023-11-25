@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgdt4sgvscb5s"]
+
+[ext_resource type="Script" path="res://assets/scripts/npc_area.gd" id="1_8iqgu"]
+[ext_resource type="Texture2D" uid="uid://mn7ag543mwjc" path="res://assets/chars/Boy1.png" id="1_bv1is"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e6t5p"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[node name="npc" type="CharacterBody3D"]
+script = ExtResource("1_8iqgu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_e6t5p")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 1
+texture_filter = 0
+texture = ExtResource("1_bv1is")

@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddg1q66gwmdk6"]
+
+[sub_resource type="GDScript" id="GDScript_8x6ts"]
+script/source = "extends Area3D
+
+@export var dialog_key = \"\"
+var area_active = false
+
+func _input(event):
+	if area_active and event.is_action_pressed(\"ui_accept\"):
+		SignalBus.emit_signal(\"display_dialog\", dialog_key)
+
+
+func _on_area_entered(area):
+	area_active = true
+
+
+func _on_area_exited(area):
+	area_active = false
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e8cpe"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="DialogArea" type="Area3D"]
+process_mode = 3
+collision_layer = 0
+collision_mask = 2
+script = SubResource("GDScript_8x6ts")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_e8cpe")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

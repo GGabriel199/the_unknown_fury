@@ -12,10 +12,10 @@
 size = Vector2i(140, 78)
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-offset_left = 750.0
-offset_top = 821.0
-offset_right = 890.0
-offset_bottom = 899.0
+offset_left = 366.0
+offset_top = 419.0
+offset_right = 506.0
+offset_bottom = 482.0
 scale = Vector2(3, 3)
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -29,6 +29,8 @@ layout_mode = 2
 
 [node name="hero_name1" type="Label" parent="PanelContainer/panel_of_heroes/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_kclbv")
+theme_override_font_sizes/font_size = 8
 text = "Sung"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -52,6 +54,8 @@ layout_mode = 2
 
 [node name="hero_name_2" type="Label" parent="PanelContainer/panel_of_heroes/VBoxContainer2"]
 layout_mode = 2
+theme = ExtResource("1_kclbv")
+theme_override_font_sizes/font_size = 8
 text = "Moni"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -75,6 +79,8 @@ layout_mode = 2
 
 [node name="hero_name_3" type="Label" parent="PanelContainer/panel_of_heroes/VBoxContainer3"]
 layout_mode = 2
+theme = ExtResource("1_kclbv")
+theme_override_font_sizes/font_size = 8
 text = "Maroon"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -98,6 +104,8 @@ layout_mode = 2
 
 [node name="hero_name_4" type="Label" parent="PanelContainer/panel_of_heroes/VBoxContainer4"]
 layout_mode = 2
+theme = ExtResource("1_kclbv")
+theme_override_font_sizes/font_size = 8
 text = "Antonieta"
 autowrap_mode = 2
 

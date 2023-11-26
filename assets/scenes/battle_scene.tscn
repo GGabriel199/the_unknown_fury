@@ -33,10 +33,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -94.0
-offset_top = -118.0
-offset_right = 94.0
-offset_bottom = 118.0
+offset_left = -104.0
+offset_top = -218.0
+offset_right = 84.0
+offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -99,6 +99,7 @@ offset_bottom = 622.0
 theme = ExtResource("1_otkxt")
 
 [node name="BattleScene" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.69277, 2.38419e-07, -0.899764)
 
 [node name="EnemyGroup" parent="BattleScene" instance=ExtResource("1_u6q3v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)

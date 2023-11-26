@@ -7,24 +7,23 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8egky"]
 texture = ExtResource("1_24o3y")
-texture_margin_top = 0.270261
-region_rect = Rect2(48, 0, 48, 16)
+region_rect = Rect2(0, 0, 144, 48)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_owm7a"]
 texture = ExtResource("1_24o3y")
-region_rect = Rect2(0, 16, 48, 16)
+region_rect = Rect2(0, 0, 144, 48)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_43tr8"]
 texture = ExtResource("1_24o3y")
-region_rect = Rect2(0, 0, 48, 16)
+region_rect = Rect2(0, 0, 144, 48)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7hjpd"]
 texture = ExtResource("1_24o3y")
-region_rect = Rect2(0, 0, 48, 16)
+region_rect = Rect2(0, 0, 144, 48)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5thtw"]
 texture = ExtResource("1_24o3y")
-region_rect = Rect2(48, 16, 48, 16)
+region_rect = Rect2(0, 0, 144, 48)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oe4fb"]
 texture = ExtResource("3_muwv0")
@@ -63,6 +62,7 @@ border_width_bottom = 2
 
 [resource]
 default_font = ExtResource("2_dpvgo")
+Button/font_sizes/font_size = 16
 Button/styles/disabled = SubResource("StyleBoxTexture_8egky")
 Button/styles/focus = SubResource("StyleBoxTexture_owm7a")
 Button/styles/hover = SubResource("StyleBoxTexture_43tr8")

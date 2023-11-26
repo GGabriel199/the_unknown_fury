@@ -1,0 +1,230 @@
+[gd_scene load_steps=13 format=3 uid="uid://eba1xh7cdaow"]
+
+[ext_resource type="Texture2D" uid="uid://c50ikv8pmynnx" path="res://assets/ui/texturefont.png" id="1_gbm4i"]
+[ext_resource type="Script" path="res://assets/scripts/main_menu.gd" id="1_puoy4"]
+[ext_resource type="Texture2D" uid="uid://enig2ektkey1" path="res://assets/ui/Main Menu/Unknown Fury.png" id="2_u4r1t"]
+[ext_resource type="Theme" uid="uid://cr5c8sq18ffmt" path="res://assets/ui/Themes/TUF_theme.tres" id="3_kh26l"]
+[ext_resource type="Texture2D" uid="uid://bp8hn1qmh38g3" path="res://assets/ui/ButtonFrame.png" id="4_p6fan"]
+[ext_resource type="AudioStream" uid="uid://cc6smrx7aog0f" path="res://assets/sfx/StartGame.mp3" id="6_7q70b"]
+[ext_resource type="FontFile" uid="uid://bx1ke3lhq6gdy" path="res://assets/fonts/CelticHand.ttf" id="6_h8gp5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3fm4a"]
+texture = ExtResource("1_gbm4i")
+texture_margin_left = 3.0
+texture_margin_top = 2.0
+texture_margin_right = 3.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="Animation" id="Animation_vw51e"]
+resource_name = "fade out"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel/GameLogo:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c404x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel/GameLogo:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xibju"]
+resource_name = "fade in"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel/GameLogo:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.694118), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cup1g"]
+_data = {
+"RESET": SubResource("Animation_c404x"),
+"fade in": SubResource("Animation_xibju"),
+"fade out": SubResource("Animation_vw51e")
+}
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_puoy4")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3fm4a")
+
+[node name="GameLogo" type="TextureRect" parent="Panel"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -250.0
+offset_right = 376.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_u4r1t")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = 76.0
+offset_right = 72.0
+offset_bottom = 228.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="TextureButton" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_kh26l")
+texture_normal = ExtResource("4_p6fan")
+
+[node name="button_text" type="Label" parent="Panel/VBoxContainer/Start"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Load" type="TextureButton" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_kh26l")
+texture_normal = ExtResource("4_p6fan")
+
+[node name="button_text" type="Label" parent="Panel/VBoxContainer/Load"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Load"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Options" type="TextureButton" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_kh26l")
+texture_normal = ExtResource("4_p6fan")
+
+[node name="button_text" type="Label" parent="Panel/VBoxContainer/Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PressEnter" type="Button" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -154.5
+offset_top = -19.5
+offset_right = 154.5
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.25098, 0.25098, 0.25098, 1)
+theme_override_fonts/font = ExtResource("6_h8gp5")
+theme_override_font_sizes/font_size = 30
+text = "Press Enter to Start"
+flat = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_cup1g")
+}
+
+[node name="ButtonPress" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_7q70b")
+
+[connection signal="pressed" from="Panel/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Panel/PressEnter" to="." method="_on_press_any_button_pressed"]
